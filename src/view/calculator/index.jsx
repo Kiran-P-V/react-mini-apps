@@ -5,9 +5,11 @@ import data from "./data";
 const Calculator = () => {
   const [value, setValue] = useState("");
   const [result, setResult] = useState("");
+  const [isEqualClicked, setIsEqualClicked] = useState(false);
 
   const handleClick = (newValue) => {
     if (newValue !== "=") {
+      setIsEqualClicked(false);
       setValue((prevValue) => prevValue + newValue);
     }
   };
@@ -16,6 +18,7 @@ const Calculator = () => {
     if (action === "=") {
       try {
         setResult(eval(value));
+        setIsEqualClicked(true);
       } catch (error) {
         setResult("Error");
       }
@@ -38,7 +41,7 @@ const Calculator = () => {
     <>
       <div className="tw-bg-black tw-h-[85vh] tw-w-[325px] tw-rounded-3xl tw-border tw-border-black">
         <div className="tw-h-[35%] tw-w-full tw-bg-gray-900 tw-rounded-3xl tw-flex tw-justify-end tw-items-end tw-text-5xl tw-p-6 tw-text-white ">
-          {result || value}
+          {isEqualClicked ? result : value}
         </div>
         <div className="tw-h-[65%] tw-w-full tw-rounded-3xl tw-p-3 flex">
           <Grid container className="tw-flex tw-justify-center" spacing={1}>
