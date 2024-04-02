@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layout/dashboard";
 import TodoList from "../view/todoList";
 import Calculator from "../view/calculator";
+import ShoppingCart from "../view/shoppingCart";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
         path: "calculator",
         element: <Calculator />,
       },
+      { path: "/shopping", element: <ShoppingCart /> },
     ],
   },
 ]);

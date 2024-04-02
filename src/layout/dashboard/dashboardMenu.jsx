@@ -1,6 +1,7 @@
 import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
 import CalculateRoundedIcon from "@mui/icons-material/CalculateRounded";
 import TimerRoundedIcon from "@mui/icons-material/TimerRounded";
+import StoreRoundedIcon from "@mui/icons-material/StoreRounded";
 
 const data = {
   menuData: [
@@ -21,6 +22,12 @@ const data = {
       name: "StopWatch",
       icon: <TimerRoundedIcon />,
       link: "/",
+    },
+    {
+      id: "4",
+      name: "Shopping",
+      icon: <StoreRoundedIcon />,
+      link: "/shopping",
     },
   ],
 };
