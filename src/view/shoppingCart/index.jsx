@@ -65,14 +65,17 @@ const ShoppingCart = () => {
       <Grid container spacing={2}>
         {shoppingCartData?.map((item, index) => (
           <Grid key={index} xs={12} sm={6} md={3} item>
-            <Card sx={{ maxWidth: 345, cursor: "pointer" }}>
+            <Card
+              elevation={5}
+              sx={{
+                maxWidth: 345,
+                cursor: "pointer",
+                borderRadius: "20px",
+                padding: 2,
+              }}
+            >
               <CardHeader
                 sx={{ display: "flex", whiteSpace: "nowrap" }}
-                avatar={
-                  <Avatar sx={{ background: "#a5e5eb" }} aria-label="recipe">
-                    R
-                  </Avatar>
-                }
                 action={
                   <IconButton aria-label="settings">
                     <MoreVertIcon />
@@ -91,7 +94,7 @@ const ShoppingCart = () => {
                     {item?.title}
                   </Typography>
                 }
-                subheader="September 14, 2016"
+                subheader={`Rs.${item?.price}`}
                 className="tw-h-10"
               />
               <CardMedia
@@ -112,7 +115,7 @@ const ShoppingCart = () => {
                   {item?.description}
                 </Typography>
               </CardContent> */}
-              <CardActions disableSpacing>
+              <CardActions className="tw-flex tw-justify-around">
                 <Button
                   onClick={() => handleItemClick(item)}
                   sx={{ background: "" }}
@@ -122,6 +125,17 @@ const ShoppingCart = () => {
                   startIcon={<ShoppingCartIcon />}
                 >
                   Add to cart
+                </Button>
+                <Button
+                  onClick={() => handleItemClick(item)}
+                  sx={{ background: "" }}
+                  disableElevation
+                  component="label"
+                  variant="contained"
+                  color="success"
+                  // startIcon={<ShoppingCartIcon />}
+                >
+                  Buy Now
                 </Button>
               </CardActions>
             </Card>
