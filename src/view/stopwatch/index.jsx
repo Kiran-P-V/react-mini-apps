@@ -21,7 +21,6 @@ const StopWatch = () => {
       setCount(0);
       setMinute((prev) => prev + 1);
     }
-    console.log(count);
   }, [count]);
   return (
     <>
