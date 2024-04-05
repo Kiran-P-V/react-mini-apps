@@ -119,7 +119,7 @@ const ShoppingCart = () => {
                     </p>
                     <a
                       onClick={() => handleRemoveItem(item)}
-                      className="tw-text-red-500 tw-cursor-pointer"
+                      className="tw-text-red-500 tw-cursor-pointer tw-text-xs tw-border-2 tw-p-2 tw-border-red-300 tw-rounded-full"
                     >
                       remove
                     </a>

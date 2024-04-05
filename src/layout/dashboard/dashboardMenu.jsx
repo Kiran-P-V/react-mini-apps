@@ -21,7 +21,7 @@ const data = {
       id: "3",
       name: "StopWatch",
       icon: <TimerRoundedIcon />,
-      link: "/",
+      link: "/stopwatch",
     },
     {
       id: "4",

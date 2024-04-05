@@ -3,6 +3,7 @@ import Dashboard from "../layout/dashboard";
 import TodoList from "../view/todoList";
 import Calculator from "../view/calculator";
 import ShoppingCart from "../view/shoppingCart";
+import StopWatch from "../view/stopwatch";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
         element: <Calculator />,
       },
       { path: "/shopping", element: <ShoppingCart /> },
+      { path: "/stopwatch", element: <StopWatch /> },
     ],
   },
 ]);
