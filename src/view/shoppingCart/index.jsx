@@ -15,7 +15,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useQuery } from "@tanstack/react-query";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../app/slices/cartSlice";
+import { addToCart, removeCartItem } from "../../app/slices/cartSlice";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,11 +31,7 @@ const ExpandMore = styled((props) => {
 const ShoppingCart = () => {
   const [expanded, setExpanded] = React.useState(false);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cart);
-
-  useEffect(() => {
-    console.log({ cartItems });
-  }, [cartItems]);
+  const cartItems = useSelector((state) => state.cart);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -51,9 +47,17 @@ const ShoppingCart = () => {
     },
   });
 
+  useEffect(() => {
+    console.log(cartItems);
+  }, [cartItems, shoppingCartData]);
+
   const handleItemClick = (item) => {
     console.log(item);
     dispatch(addToCart(item));
+  };
+
+  const handleRemoveItem = (item) => {
+    dispatch(removeCartItem(item));
   };
 
   useEffect(() => {
@@ -69,7 +73,7 @@ const ShoppingCart = () => {
               elevation={5}
               sx={{
                 maxWidth: 345,
-                cursor: "pointer",
+                // cursor: "pointer",
                 borderRadius: "20px",
                 padding: 2,
               }}
@@ -106,26 +110,32 @@ const ShoppingCart = () => {
               >
                 <img className="tw-h-80 tw-object-contain" src={item?.image} />
               </CardMedia>
-              {/* <CardContent>
-                <Typography
-                  className="tw-h-20 tw-overflow-auto scrollbar-hidden"
-                  variant="body2"
-                  color="text.secondary"
-                >
-                  {item?.description}
-                </Typography>
-              </CardContent> */}
+
               <CardActions className="tw-flex tw-justify-around">
-                <Button
-                  onClick={() => handleItemClick(item)}
-                  sx={{ background: "" }}
-                  disableElevation
-                  component="label"
-                  variant="outlined"
-                  startIcon={<ShoppingCartIcon />}
-                >
-                  Add to cart
-                </Button>
+                {cartItems?.some((element) => element?.id === item?.id) ? (
+                  <>
+                    <p className="tw-font-bold tw-text-blue-700 tw-text-xs tw-cursor-default">
+                      Already in Cart
+                    </p>
+                    <a
+                      onClick={() => handleRemoveItem(item)}
+                      className="tw-text-red-500 tw-cursor-pointer"
+                    >
+                      remove
+                    </a>
+                  </>
+                ) : (
+                  <Button
+                    onClick={() => handleItemClick(item)}
+                    sx={{ background: "" }}
+                    disableElevation
+                    component="label"
+                    variant="outlined"
+                    startIcon={<ShoppingCartIcon />}
+                  >
+                    Add to cart
+                  </Button>
+                )}
                 <Button
                   onClick={() => handleItemClick(item)}
                   sx={{ background: "" }}
