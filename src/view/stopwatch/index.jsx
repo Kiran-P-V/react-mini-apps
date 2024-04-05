@@ -29,9 +29,9 @@ const StopWatch = () => {
         <div className="tw-flex tw-text-6xl">
           <p className="tw-text-9xl">00</p>
           <p className="tw-text-9xl">:</p>
-          <p className="tw-text-9xl">{minute}</p>
+          <p className="tw-text-9xl">{minute < 10 ? `0${minute}` : minute}</p>
           <p className="tw-text-9xl">:</p>
-          <p className="tw-text-9xl">{count}</p>
+          <p className="tw-text-9xl">{count < 10 ? `0${count}` : count}</p>
         </div>
         <div className="tw-flex tw-justify-around tw-p-4">
           <a className="tw-bg-green-200 tw-rounded-full tw-p-4 tw-cursor-pointer">
